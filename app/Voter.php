@@ -23,14 +23,4 @@ class Voter extends Model
         'updated_at',
         'dob'
     ];
-    
-    /**
-     * Elections this voter has participated in.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function elections()
-    {
-        return $this->hasMany(Election::class);
-    }
 }
