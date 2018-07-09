@@ -12,6 +12,10 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    require('../theme/js/plugins/loaders/blockui.min');
+    require('../theme/js/plugins/ui/slinky.min');
+    require('../theme/js/app');
 } catch (e) {}
 
 /**

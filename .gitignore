@@ -14,8 +14,13 @@ yarn-error.log
 
 public/css
 public/js
+public/fonts
+public/images
+public/mix-manifest.json
 storage/debugbar
 
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
+
+.DS_Store

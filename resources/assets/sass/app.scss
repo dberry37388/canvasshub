@@ -1,14 +1,12 @@
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
 @import "variables";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "../theme/scss/config";
+@import "../theme/scss/layouts/layout_4/default/compile/bootstrap";
+@import "../theme/scss/layouts/layout_4/default/compile/bootstrap_limitless";
+@import "../theme/scss/layouts/layout_4/default/compile/components";
+@import "../theme/scss/layouts/layout_4/default/compile/layout";
+@import "../theme/scss/layouts/layout_4/default/compile/colors";
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
+@import "../theme/css/icons/icomoon/styles.css";
+@import "../theme/css/icons/material/icons.css";
