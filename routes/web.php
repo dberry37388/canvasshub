@@ -15,6 +15,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')
+    ->get('/activate-email/{user}', function (\Illuminate\Http\Request $request) {
+        if (! $request->hasValidSignature()) {
+            abort(401, 'This link is not valid.');
+        }
+    
+        $request->user()->update([
+            'is_activated' => true
+        ]);
+    
+        return redirect(route('home'));
+})->name('activate-email');
+
+Route::get('resend-activation-email', 'Auth\RegisterController@resendActivationEmail')->name('activate-resend');
+
+Route::get('not-active', function() {
+    return view('not-active');
+})->name('not-active');
+
+
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware('active')
+    ->group(function() {
+        Route::get('/home', 'HomeController@index')->name('home');
+    });

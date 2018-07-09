@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\Users\ActivateEmailNotification;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -37,7 +38,20 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest')->except('resendActivationEmail');
+    }
+    
+    /**
+     * Resends the user's activation email.
+     */
+    public function resendActivationEmail()
+    {
+        $user = auth()->user();
+        
+        $user->notify(new ActivateEmailNotification($user));
+        
+        return redirect(route('home'))
+            ->withSuccess(true);
     }
 
     /**
@@ -63,10 +77,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'is_activated' => false
         ]);
+        
+        $user->notify(new ActivateEmailNotification($user));
+        
+        return $user;
     }
 }

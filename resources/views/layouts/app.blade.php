@@ -30,6 +30,21 @@
             <div class="page-content">
                 <div class="content-wrapper">
                     <div class="content">
+
+                        @if ($currentUser && ! $currentUser->is_activated && ! session('success') && ! request()->routeIs('not-active'))
+                            <div class="alert alert-warning border-0">
+                                <div class="font-weight-semibold">Please Verify Your Account</div>
+                                Your email address has not been verified. We sent an email to {{$currentUser->email}},
+                                containing a link to verify your account. If you did not receive this email, please
+                                <a href="{{ route('activate-resend') }}">click here</a> to have it resent. If you have
+                                not verified your account by {{ $currentUser->created_at->addDays(30)->format("F j, Y") }}, your account will be disabled.
+                            </div>
+                        @elseif(session('success'))
+                            <div class="alert alert-success border-0">
+                                An email has been sent to {{$currentUser->email}}, containing a link to verify your account.
+                            </div>
+                        @endif
+
                         @yield('content')
                     </div>
                 </div>
