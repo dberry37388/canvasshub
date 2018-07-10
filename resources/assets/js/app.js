@@ -8,6 +8,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import * as VueGoogleMaps from "vue2-google-maps";
 
 Vue.mixin({
     methods: {
@@ -15,7 +16,15 @@ Vue.mixin({
     }
 });
 
+Vue.use(VueGoogleMaps, {
+    load: {
+        key: "AIzaSyDPXifde3JHcMgh-1fdlrrOMCKC23Klfmc",
+        libraries: "places" // necessary for places input
+    }
+});
+
 import VoterList from './pages/voters/VoterList';
+import VoterMap from "./pages/voters/VoterMap";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -24,6 +33,8 @@ import VoterList from './pages/voters/VoterList';
  */
 
 Vue.component(VoterList.name, VoterList);
+Vue.component(VoterMap.name, VoterMap);
+
 
 const app = new Vue({
     el: '#app'

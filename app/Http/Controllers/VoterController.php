@@ -4,24 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Filters\VoterFilters;
 use App\Voter;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 class VoterController extends Controller
 {
     /**
      * Display listing of all voters that meet the filters.
      *
-     * @param \App\Filters\VoterFilters $filters
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index(VoterFilters $filters)
+    public function index()
     {
-        $voters = $this->getVoters($filters);
-        
-        return view('voters.index', [
-            'voters' => $voters->appends(Input::except('page'))
-        ]);
+        return view('voters.index');
     }
     
     /**
@@ -32,6 +25,16 @@ class VoterController extends Controller
     public function search()
     {
         return view('voters.search');
+    }
+    
+    /**
+     * Displays the voters on a Google Map
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function map()
+    {
+        return view('voters.map');
     }
 
     /**

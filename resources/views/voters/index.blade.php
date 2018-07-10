@@ -12,6 +12,7 @@
 
                 <div class="mb-3">
                     <a href="{{ route('voters.search') }}" class="btn btn-light">Back to Search</a>
+                    <a href="{{ route('voters.map', request()->input()) }}" class="btn btn-light">Map Voters</a>
                 </div>
 
                     <div>

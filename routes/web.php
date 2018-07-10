@@ -44,5 +44,6 @@ Route::middleware(['auth', 'active'])
         Route::group(['prefix' => 'voters'], function() {
             Route::get('/', 'VoterController@index')->name('voters.index');
             Route::get('search', 'VoterController@search')->name('voters.search');
+            Route::get('map', 'VoterController@map')->name('voters.map');
         });
     });

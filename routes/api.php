@@ -21,3 +21,8 @@ Route::apiResource('voters', 'Api\VotersController')
         'update' => 'api.voters.update',
         'destroy' => 'api.voters.destroy'
     ]);
+
+Route::apiResource('votermap', 'Api\VoterMapController')
+    ->names([
+        'index' => 'api.votermap.index',
+    ]);

@@ -32,6 +32,8 @@ class VoterResource extends JsonResource
             'e_9' => mapElectionCode($this->e_9),
             'e_13' => mapElectionCode($this->e_13),
             'e_14' => mapElectionCode($this->e_14),
+            'latitude' => $this->latitude,
+            'longitude' => $this->longitude
         ];
     }
 }
