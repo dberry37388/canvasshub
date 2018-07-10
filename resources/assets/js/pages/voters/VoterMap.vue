@@ -17,12 +17,17 @@
                 @closeclick="infoWindow.open=false">
                 <div>
                     <div class="mb-1">
-                        <p class="mb-0">
+                        <div class="mb-0">
                             <strong>{{ infoWindow.item.first_name }} {{ infoWindow.item.last_name }}</strong>
-                        </p>
+                        </div>
+
                         <span class="font-size-sm">
                             ({{ infoWindow.item.age }}/{{ infoWindow.item.gender }}) / {{ infoWindow.item.propensity }}
                         </span>
+
+                        <div class="mt-2">
+                            <i class="icon-location3"></i> {{ infoWindow.item.registered_address }}
+                        </div>
                     </div>
                 </div>
             </gmap-info-window>

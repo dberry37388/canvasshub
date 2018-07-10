@@ -7,7 +7,16 @@
                         <div class="text-semibold">
                             {{ item.first_name }} {{ item.last_name }}
                         </div>
-                        <span class="text-muted">{{ item.age }} ({{ item.gender }}) / {{ item.propensity }} / {{ item.phone }}</span>
+
+                        <div class="text-muted mb-2">
+                            {{ item.age }} ({{ item.gender }})
+                            <span v-if="item.propensity">/ {{ item.propensity }} </span>
+                            <span v-if="item.propensity">/ {{ item.phone }}</span>
+                        </div>
+
+                        <div class="registered_address">
+                            <i class="icon-location3"></i> {{ item.registered_address }}, {{ item.registered_city }}
+                        </div>
                     </div>
 
                     <div class="table-responsive">
