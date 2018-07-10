@@ -14,6 +14,13 @@
                         Dashboard
                     </a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('voters.search') }}" class="navbar-nav-link">
+                        <i class="icon-search4 mr-2"></i>
+                        Voters
+                    </a>
+                </li>
             </ul>
 
             <ul class="navbar-nav navbar-nav-highlight ml-md-auto">

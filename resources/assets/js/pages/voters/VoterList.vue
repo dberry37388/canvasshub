@@ -7,7 +7,6 @@
                         <div class="text-semibold">
                             {{ item.first_name }} {{ item.last_name }}
                         </div>
-
                         <span class="text-muted">{{ item.age }} ({{ item.gender }}) / {{ item.propensity }} / {{ item.phone }}</span>
                     </div>
 
