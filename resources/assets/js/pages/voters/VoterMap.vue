@@ -68,6 +68,7 @@
                 axios.get(this.url())
                     .then(response => {
                         let self = this;
+                        let center = {};
 
                         response.data.data.forEach(function(voter) {
                             self.markers.push({
@@ -75,9 +76,16 @@
                                     lat: voter.latitude,
                                     lng: voter.longitude
                                 },
-                                content: voter
+                                content: voter,
                             });
+
+                            center = {
+                                lat: voter.latitude,
+                                lng: voter.longitude
+                            };
                         });
+
+                        this.center = center;
                     });
             },
 
