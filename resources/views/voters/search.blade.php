@@ -52,17 +52,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-lg-4 col-form-label">Per Page</label>
-                            <div class="col-lg-8">
-                                <select name="perPage" id="perPage" class="form-control">
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select>
-                            </div>
-                        </div>
-
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary">Search</button>
                         </div>

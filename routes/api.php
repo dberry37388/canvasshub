@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::apiResource('voters', 'Api\VotersController')
+    ->names([
+        'index' => 'api.voters.index',
+        'show' => 'api.voters.show',
+        'store' => 'api.voters.store',
+        'update' => 'api.voters.update',
+        'destroy' => 'api.voters.destroy'
+    ]);

@@ -31,16 +31,6 @@ class Voter extends Model
     ];
     
     /**
-     * Accessor for the Voter's age.
-     *
-     * @return int
-     */
-    public function getAgeAttribute()
-    {
-        return Carbon::parse($this->attributes['dob'])->age;
-    }
-    
-    /**
      * Apply all relevant thread filters.
      *
      * @param  Builder       $query
@@ -53,15 +43,12 @@ class Voter extends Model
     }
     
     /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * Accessor for the Voter's age.
+     *
+     * @return int
      */
-    public function scopeHasVoted(Builder $query)
+    public function getAgeAttribute()
     {
-        return $query->where(function($q) {
-            foreach (config('voters.current_elections') as $election) {
-                $q->orWhereNotNull($election);
-            }
-        });
+        return Carbon::parse($this->attributes['dob'])->age;
     }
 }
