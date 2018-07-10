@@ -13,7 +13,7 @@ class ImportVotersTable extends Migration
      */
     public function up()
     {
-        $file = realpath(storage_path('app/data/voterdata.sql'));
+        $file = realpath(storage_path('data/voterdata.sql'));
         
         \Illuminate\Support\Facades\DB::unprepared(file_get_contents($file));
     }
