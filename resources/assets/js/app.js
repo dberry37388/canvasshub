@@ -37,5 +37,5 @@ Vue.component(VoterMap.name, VoterMap);
 
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
 });

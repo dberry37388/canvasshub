@@ -1,6 +1,6 @@
 <template>
     <div>
-        <gmap-map :center="center" :zoom="12" style="width:100%;  min-height: 500px;">
+        <gmap-map :center="center" :zoom="19" style="width:100%;  min-height: calc(100vh - 104px);">
             <gmap-marker
                 v-for="m in markers"
                 :position="m.position"
@@ -17,35 +17,13 @@
                 @closeclick="infoWindow.open=false">
                 <div>
                     <div class="mb-1">
-                        <strong>{{ infoWindow.item.first_name }} {{ infoWindow.item.last_name }}</strong> ({{ infoWindow.item.age }}/{{ infoWindow.item.gender }})
-                        <br> {{ infoWindow.item.propensity }}
+                        <p class="mb-0">
+                            <strong>{{ infoWindow.item.first_name }} {{ infoWindow.item.last_name }}</strong>
+                        </p>
+                        <span class="font-size-sm">
+                            ({{ infoWindow.item.age }}/{{ infoWindow.item.gender }}) / {{ infoWindow.item.propensity }}
+                        </span>
                     </div>
-
-                    <table class="table table-bordered table-sm">
-                        <thead>
-                            <tr>
-                                <th>5/18</th>
-                                <th>8/16</th>
-                                <th>3/16</th>
-                                <th>8/14</th>
-                                <th>5/14</th>
-                                <th>8/12</th>
-                                <th>3/12</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <th>{{ infoWindow.item.e_1 }}</th>
-                                <th>{{ infoWindow.item.e_4 }}</th>
-                                <th>{{ infoWindow.item.e_5 }}</th>
-                                <th>{{ infoWindow.item.e_8 }}</th>
-                                <th>{{ infoWindow.item.e_9 }}</th>
-                                <th>{{ infoWindow.item.e_13 }}</th>
-                                <th>{{ infoWindow.item.e_14 }}</th>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </gmap-info-window>
         </gmap-map>
@@ -57,17 +35,11 @@
         name: "voter-map",
         data() {
             return {
-                // default to Montreal to keep it simple
-                // change this to whatever makes sense
                 center: {
-                    lat: 35.49,
-                    lng:  -86.07
+                    lat: 0,
+                    lng: 0
                 },
                 markers: [],
-                shape: {
-                    coords: [35, 35, 35, 86, 86, 86, 86, 35],
-                    type: 'poly'
-                },
                 infoWindow: {
                     position: {lat: 0, lng: 0},
                     open: false,
@@ -77,20 +49,21 @@
             };
         },
 
-        mounted() {
-            //this.geolocate();
+        created() {
+            this.setCenter();
             this.addMarkers();
         },
 
         methods: {
-            geolocate() {
-                navigator.geolocation.getCurrentPosition(position => {
-                    let marker =  {
+
+            setCenter() {
+                self = this;
+
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    self.center = {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     };
-                    this.markers.push({ position: marker });
-                    this.center = marker;
                 });
             },
 
@@ -123,14 +96,14 @@
 
             mapIcon (propensity) {
                 if (propensity === 'Hard Republican') {
-                    return 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                    return 'https://maps.google.com/mapfiles/ms/icons/red-dot.png'
                 }
 
                 if (propensity === 'Hard Democrat') {
-                    return 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                    return 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png'
                 }
 
-                return 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                return 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
             },
 
             url() {
