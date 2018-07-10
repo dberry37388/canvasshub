@@ -37,7 +37,12 @@ Route::get('not-active', function() {
 
 Auth::routes();
 
-Route::middleware('active')
+Route::middleware(['auth', 'active'])
     ->group(function() {
         Route::get('/home', 'HomeController@index')->name('home');
+        
+        Route::group(['prefix' => 'voters'], function() {
+            Route::get('/', 'VoterController@index')->name('voters.index');
+            Route::get('search', 'VoterController@search')->name('voters.search');
+        });
     });

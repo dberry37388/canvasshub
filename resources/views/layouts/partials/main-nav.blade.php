@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-md navbar-dark navbar-lg">
+<div class="navbar navbar-expand-md navbar-dark navbar-lg fixed-top">
     <div class="navbar-brand wmin-0 mr-5">
         <a href="{{ route('home') }}" class="d-inline-block">
             <img src="{{ asset('images/logo-light.png') }}" alt="{{ config('app.name') }}">
