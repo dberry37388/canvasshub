@@ -1,6 +1,6 @@
 <template>
     <div>
-        <gmap-map :center="center" :zoom="19" style="width:100%;  min-height: calc(100vh - 104px);">
+        <gmap-map :center="center" :zoom="12" style="width:100%;  min-height: calc(100vh - 104px);">
             <gmap-marker
                 v-for="m in markers"
                 :position="m.position"
@@ -36,8 +36,8 @@
         data() {
             return {
                 center: {
-                    lat: 0,
-                    lng: 0
+                    lat: 35.4817432,
+                    lng: -86.0885993
                 },
                 markers: [],
                 infoWindow: {
@@ -50,23 +50,10 @@
         },
 
         created() {
-            this.setCenter();
             this.addMarkers();
         },
 
         methods: {
-
-            setCenter() {
-                self = this;
-
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    self.center = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                });
-            },
-
             openInfoWindowTemplate (item) {
                 this.infoWindow.position = {
                     lat: item.latitude,
