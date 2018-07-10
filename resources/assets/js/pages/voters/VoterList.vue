@@ -1,46 +1,46 @@
 <template>
     <div>
-        <table class="table table-bordered table-hover">
-            <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Age</th>
-                <th>Gender</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Precinct</th>
-                <th>Propensity</th>
-                <th>5/18</th>
-                <th>8/16</th>
-                <th>3/16</th>
-                <th>8/14</th>
-                <th>5/14</th>
-                <th>8/12</th>
-                <th>3/12</th>
-            </tr>
-            </thead>
+        <div class="col">
+            <div class="card" v-for="item in items">
+                <div class="card-body">
+                    <div class="mb-3">
+                        <div class="text-semibold">
+                            {{ item.first_name }} {{ item.last_name }}
+                        </div>
 
-            <tbody>
-            <tr v-for="item in items">
-                <td>{{ item.first_name }}</td>
-                <td>{{ item.last_name }}</td>
-                <td>{{ item.age }}</td>
-                <td>{{ item.gender }}</td>
-                <td>{{ item.registered_address }}, {{ item.registered_city }}</td>
-                <td>{{ item.phone }}</td>
-                <td>{{ item.pct_nbr }}</td>
-                <td>{{ item.propensity }}</td>
-                <th>{{ item.e_1 }}</th>
-                <th>{{ item.e_4 }}</th>
-                <th>{{ item.e_5 }}</th>
-                <th>{{ item.e_8 }}</th>
-                <th>{{ item.e_9 }}</th>
-                <th>{{ item.e_13 }}</th>
-                <th>{{ item.e_14 }}</th>
-            </tr>
-            </tbody>
-        </table>
+                        <span class="text-muted">{{ item.age }} ({{ item.gender }}) / {{ item.propensity }} / {{ item.phone }}</span>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-xs table-bordered">
+                            <thead>
+                            <tr class="text-semibold bg-light">
+                                <th>5/18</th>
+                                <th>8/16</th>
+                                <th>3/16</th>
+                                <th>8/14</th>
+                                <th>5/14</th>
+                                <th>8/12</th>
+                                <th>3/12</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                                <th>{{ item.e_1 }}</th>
+                                <th>{{ item.e_4 }}</th>
+                                <th>{{ item.e_5 }}</th>
+                                <th>{{ item.e_8 }}</th>
+                                <th>{{ item.e_9 }}</th>
+                                <th>{{ item.e_13 }}</th>
+                                <th>{{ item.e_14 }}</th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="mt-4">
             <ul class="pagination pagination-pager justify-content-center">

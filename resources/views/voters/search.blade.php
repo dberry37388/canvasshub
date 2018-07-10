@@ -10,7 +10,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label">Precinct</label>
                             <div class="col-lg-8">
-                                <select name="precinct" id="precinct" class="form-control">
+                                <select name="precinct" id="precinct" class="form-control" required>
                                     <option value="">All Precincts</option>
                                     @for ($i = 1; $i <= 21; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>
