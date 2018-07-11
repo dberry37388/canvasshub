@@ -5,7 +5,7 @@
                 <div class="card-body">
                     <div class="mb-3">
                         <div class="text-semibold">
-                            {{ item.first_name }} {{ item.last_name }}
+                            <a :href="route('voters.show', {voter: item.id})">{{ item.first_name }} {{ item.last_name }}</a>
                         </div>
 
                         <div class="text-muted mb-2">

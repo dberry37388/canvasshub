@@ -14,11 +14,15 @@
                 :options="{maxWidth: 300}"
                 :position="infoWindow.position"
                 :opened="infoWindow.open"
-                @closeclick="infoWindow.open=false">
+                @closeclick="infoWindow.open=false"
+                v-if="infoWindow.item"
+            >
                 <div>
                     <div class="mb-1">
                         <div class="mb-0">
-                            <strong>{{ infoWindow.item.first_name }} {{ infoWindow.item.last_name }}</strong>
+                            <a :href="route('voters.show', {voter: infoWindow.item.id})">
+                                <strong>{{ infoWindow.item.first_name }} {{ infoWindow.item.last_name }}</strong>
+                            </a>
                         </div>
 
                         <span class="font-size-sm">

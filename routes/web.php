@@ -45,5 +45,6 @@ Route::middleware(['auth', 'active'])
             Route::get('/', 'VoterController@index')->name('voters.index');
             Route::get('search', 'VoterController@search')->name('voters.search');
             Route::get('map', 'VoterController@map')->name('voters.map');
+            Route::get('{voter}', 'VoterController@show')->name('voters.show');
         });
     });

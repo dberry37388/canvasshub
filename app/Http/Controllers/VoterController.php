@@ -45,7 +45,7 @@ class VoterController extends Controller
      */
     public function show(Voter $voter)
     {
-        return view('voter.show', compact('voter'));
+        return view('voters.show', compact('voter'));
     }
     
     /**

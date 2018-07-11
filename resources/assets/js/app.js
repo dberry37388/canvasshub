@@ -25,6 +25,7 @@ Vue.use(VueGoogleMaps, {
 
 import VoterList from './pages/voters/VoterList';
 import VoterMap from "./pages/voters/VoterMap";
+import VoterDetail from "./pages/voters/VoterDetail";
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -34,6 +35,7 @@ import VoterMap from "./pages/voters/VoterMap";
 
 Vue.component(VoterList.name, VoterList);
 Vue.component(VoterMap.name, VoterMap);
+Vue.component(VoterDetail.name, VoterDetail);
 
 
 const app = new Vue({

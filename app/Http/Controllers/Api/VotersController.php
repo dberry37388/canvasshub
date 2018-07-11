@@ -37,12 +37,12 @@ class VotersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  \App\Voter  $voter
+     * @return \App\Http\Resources\VoterResource
      */
-    public function show($id)
+    public function show(Voter $voter)
     {
-        //
+        return new VoterResource($voter);
     }
 
     /**
