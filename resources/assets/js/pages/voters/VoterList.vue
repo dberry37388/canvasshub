@@ -1,53 +1,7 @@
 <template>
     <div>
-        <div class="col">
-            <div class="card" v-for="item in items">
-                <div class="card-body">
-                    <div class="mb-3">
-                        <div class="text-semibold">
-                            <a :href="route('voters.show', {voter: item.id})">{{ item.first_name }} {{ item.last_name }}</a>
-                        </div>
-
-                        <div class="text-muted mb-2">
-                            {{ item.age }} ({{ item.gender }})
-                            <span v-if="item.propensity">/ {{ item.propensity }} </span>
-                            <span v-if="item.propensity">/ {{ item.phone }}</span>
-                        </div>
-
-                        <div class="registered_address">
-                            <i class="icon-location3"></i> {{ item.registered_address }}, {{ item.registered_city }}
-                        </div>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-xs table-bordered">
-                            <thead>
-                            <tr class="text-semibold bg-light">
-                                <th>5/18</th>
-                                <th>8/16</th>
-                                <th>3/16</th>
-                                <th>8/14</th>
-                                <th>5/14</th>
-                                <th>8/12</th>
-                                <th>3/12</th>
-                            </tr>
-                            </thead>
-
-                            <tbody>
-                            <tr>
-                                <th>{{ item.e_1 }}</th>
-                                <th>{{ item.e_4 }}</th>
-                                <th>{{ item.e_5 }}</th>
-                                <th>{{ item.e_8 }}</th>
-                                <th>{{ item.e_9 }}</th>
-                                <th>{{ item.e_13 }}</th>
-                                <th>{{ item.e_14 }}</th>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+        <div class="col" v-for="item in items">
+            <voter-info :voter="item"></voter-info>
         </div>
 
         <div class="mt-4">
@@ -60,14 +14,11 @@
 </template>
 
 <script>
-    import Paginator from '../../components/Paginator';
+    import VoterInfo from '../../pages/voters/VoterInfo';
 
     export default {
         name: 'voter-list',
-
-        components: {
-            Paginator
-        },
+        components: { VoterInfo },
 
         data: () => ({
             dataSet: {},
