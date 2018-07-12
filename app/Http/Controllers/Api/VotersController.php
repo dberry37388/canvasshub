@@ -76,7 +76,8 @@ class VotersController extends Controller
      */
     protected function getVoters(VoterFilters $filters)
     {
-        $voters = Voter::filter($filters);
+        $voters = Voter::where('total_votes', '>=', 1)
+            ->filter($filters);
         
         return $voters
             ->orderBy('precinct', 'asc')

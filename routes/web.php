@@ -47,4 +47,8 @@ Route::middleware(['auth', 'active'])
             Route::get('map', 'VoterController@map')->name('voters.map');
             Route::get('{voter}', 'VoterController@show')->name('voters.show');
         });
+        
+        Route::group(['prefix' => 'exports'], function() {
+            Route::get('county', 'Exports\CountyExport@export')->name('exports.county');
+        });
     });

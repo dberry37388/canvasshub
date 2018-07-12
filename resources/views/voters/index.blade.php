@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
+    <div id="printable" class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
                 @component('components.card')
@@ -13,6 +13,7 @@
                 <div class="mb-3">
                     <a href="{{ route('voters.search') }}" class="btn btn-light">Back to Search</a>
                     <a href="{{ route('voters.map', request()->input()) }}" class="btn btn-light">Map Voters</a>
+                   <download-voter-list></download-voter-list>
                 </div>
 
                     <div>

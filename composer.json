@@ -12,6 +12,7 @@
         "laravel/passport": "^6.0",
         "laravel/tinker": "^1.0",
         "league/csv": "^9.1",
+        "maatwebsite/excel": "^3.0",
         "malhal/laravel-geographical": "^1.0",
         "tightenco/ziggy": "^0.6.6"
     },

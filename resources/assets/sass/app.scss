@@ -10,3 +10,7 @@
 
 @import "../theme/css/icons/icomoon/styles.css";
 @import "../theme/css/icons/material/icons.css";
+
+@media print {
+    .navbar * { display:none; }
+}
