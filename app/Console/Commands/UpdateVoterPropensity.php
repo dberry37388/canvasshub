@@ -56,18 +56,22 @@ class UpdateVoterPropensity extends Command
                     $voter->percent_democrat = $democratPercentage;
                     $voter->total_votes = $totalVotes;
                     
-                    if ($republicanPercentage >= 60) {
+                    if ($totalVotes == 1 && ($republicanPercentage > $democratPercentage)) {
+                        $voter->propensity = 'New Republican';
+                    } elseif ($totalVotes == 1 && ($democratPercentage > $republicanPercentage)) {
+                        $voter->propensity = 'New Democrat';
+                    } elseif ($republicanPercentage >= 51) {
                         $voter->propensity = 'Hard Republican';
-                    } elseif ($democratPercentage >= 60) {
+                    } elseif ($democratPercentage >= 51) {
                         $voter->propensity = 'Hard Democrat';
                     } elseif ($republicanPercentage == 50 && $democratPercentage == 50) {
                         $voter->propensity = 'Balanced';
-                    } elseif ($republicanPercentage <= 60 && $republicanPercentage > 50) {
+                    } elseif ($republicanPercentage > $democratPercentage) {
                         $voter->propensity = 'Soft Republican';
-                    } elseif ($democratPercentage <= 60 && $democratPercentage > 50) {
+                    } elseif ($democratPercentage > $republicanPercentage) {
                         $voter->propensity = 'Soft Democrat';
-                    } elseif ($republicanPercentage <= 50) {
-                        $voter->propensity = 'Balanced';
+                    } else {
+                        $voter->propensity = "Undetermined";
                     }
                 } else {
                     $voter->propensity = 'Non-Voter';

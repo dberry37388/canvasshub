@@ -67,11 +67,14 @@ return [
     ],
     
     'propensities' => [
+        'New Republican',
         'Hard Republican',
         'Soft Republican',
+        'New Democrat',
         'Hard Democrat',
         'Soft Democrat',
         'Non-Voter',
-        'Balanced'
+        'Balanced',
+        'Undetermined'
     ]
 ];
